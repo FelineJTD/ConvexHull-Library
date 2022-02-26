@@ -60,6 +60,9 @@ def partConvexHull(hull, bucket, indexList, p1, p2):
         maxIdx = i
         maxD = d
     # titik dengan jarak terbesar telah ditemukan dan siap ditambahkan ke dalam hull
+
+    # menghapus titik terjauh dari kumpulan titik
+    indexList.remove(maxIdx)
     
     # partisi titik-titik untuk menentukan titik mana saja yang masih berada 'di luar' convex hull,
     # partisi yang akan digunakan keduanya merupakan partisi kiri dari kedua garis yang baru terbentuk
@@ -91,6 +94,10 @@ def convexHull(bucket):
   # titik-titik ini dipakai sebagai acuan pertama dalam partisi divide and conquer
   minIdx = np.argmin(bucket, axis=0)[0] # p1
   maxIdx = np.argmax(bucket, axis=0)[0] # pn
+
+  # menghapus titik-titik ekstrem dari kumpulan titik
+  indexList.pop(minIdx)
+  indexList.pop(maxIdx)
 
   # membagi titik-titik menjadi bagian kiri dan kanan dari garis p1pn
   left, right = partition(bucket, indexList, bucket[minIdx], bucket[maxIdx])
