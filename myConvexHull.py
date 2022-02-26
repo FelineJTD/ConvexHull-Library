@@ -96,8 +96,8 @@ def convexHull(bucket):
   maxIdx = np.argmax(bucket, axis=0)[0] # pn
 
   # menghapus titik-titik ekstrem dari kumpulan titik
-  indexList.pop(minIdx)
-  indexList.pop(maxIdx)
+  indexList.remove(minIdx)
+  indexList.remove(maxIdx)
 
   # membagi titik-titik menjadi bagian kiri dan kanan dari garis p1pn
   left, right = partition(bucket, indexList, bucket[minIdx], bucket[maxIdx])

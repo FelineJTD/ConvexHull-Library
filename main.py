@@ -1,18 +1,20 @@
-# imports
-import numpy as np
-import pandas as pd
-
-from sklearn import datasets
-from myConvexHull import convexHull
-import argparse
-
 # arguments
+import argparse
 parser = argparse.ArgumentParser(description='Program untuk membuat convex hull.')
-parser.add_argument('dataset', choices=['iris', 'wine', 'breast_cancer'])
+parser.add_argument('dataset', choices=['iris', 'wine', 'breast_cancer'], help='name of dataset')
+parser.add_argument('x', help='first column', type=int)
+parser.add_argument('y', help='second column', type=int)
 parser.add_argument('-o', dest='output',
                     default='output.png',
                     help='output file name (default: output.png)')
 args = parser.parse_args()
+
+# imports
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from myConvexHull import convexHull
 
 # load data based on argument
 if args.dataset == 'iris':
@@ -21,18 +23,15 @@ elif args.dataset == 'wine':
   data = datasets.load_wine()
 elif args.dataset == 'breast_cancer':
   data = datasets.load_breast_cancer()
-print('checkpoint1')
 
 # create a DataFrame
 df = pd.DataFrame(data.data, columns=data.feature_names)
 df['Target'] = pd.DataFrame(data.target)
 
 # configure which columns to use
-x = 0
-y = 1
-print('checkpoint2')
+x = args.x
+y = args.y
 
-import matplotlib.pyplot as plt
 # plot data and convex hull
 plt.figure(figsize = (10, 6))
 colors = ['b','r','g']
@@ -49,3 +48,5 @@ for i in range(len(data.target_names)):
     plt.plot(bucket[[hull[j], hull[j+1]], 0], bucket[[hull[j], hull[j+1]], 1], colors[i])
 plt.legend()
 plt.savefig(args.output) # save plot
+
+print(f'Convex hull created. Output named as {args.output}')
