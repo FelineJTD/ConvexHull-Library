@@ -1,20 +1,20 @@
 # arguments
 import argparse
 parser = argparse.ArgumentParser(description='Program untuk membuat convex hull.')
-parser.add_argument('dataset', choices=['iris', 'wine', 'breast_cancer'], help='name of dataset')
-parser.add_argument('x', help='first column', type=int)
-parser.add_argument('y', help='second column', type=int)
+parser.add_argument('dataset', metavar='dataset', choices=['iris', 'wine', 'breast_cancer'], help='name of dataset')
+parser.add_argument('x', help='first attribute', type=int)
+parser.add_argument('y', help='second attribute', type=int)
 parser.add_argument('-o', dest='output',
                     default='output.png',
                     help='output file name (default: output.png)')
 args = parser.parse_args()
 
 # imports
+from myConvexHull import convexHull
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn import datasets
-from myConvexHull import convexHull
 
 # load data based on argument
 if args.dataset == 'iris':
@@ -49,4 +49,4 @@ for i in range(len(data.target_names)):
 plt.legend()
 plt.savefig(args.output) # save plot
 
-print(f'Convex hull created. Output named as {args.output}')
+print(f'Convex hull berhasil dibuat. Output diberi nama {args.output}')
