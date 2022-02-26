@@ -80,7 +80,7 @@ def partConvexHull(hull, bucket, indexList, p1, p2):
 def convexHull(bucket):
   # Fungsi untuk menentukan titik-titik pembentuk convex hull dari sekumpulan titik.
   # Fungsi menerima kumpulan titik yang ditampung dalam bucket (array of array).
-  # Fungsi mengeluarkan hull (array of array) yang berisi titik-titik pembentuk convex hull 
+  # Fungsi mengeluarkan hull (array) yang berisi indeks-indeks titik pembentuk convex hull 
   # yang berurutan, serta titik pertama (indeks 0) dituliskan lagi di akhir array (indeks terakhir)
   # untuk memudahkan plotting grafik (agar convex hull menjadi utuh, nyambung semua dari awal balik ke awal)
 
