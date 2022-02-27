@@ -60,5 +60,9 @@ python3 main.py -o output.png iris 0 1
 ### Menggunakan Jupyter Notebook (`main.ipynb`)
 Buka file `main.ipynb` pada folder src, ubah parameter yang ditandai dengan komentar `# Ubah ...` sesuai keinginan, kemudian jalankan seluruh kode program.
 
+## Contoh Output
+Dengan menggunakan dataset iris dan atribut ke-0 (sepal length) dan ke-1 (sepal width), program utama akan menghasilkan keluaran sebagai berikut.
+![Screenshot Output Program](./img/output.png)
+
 ## Author
 Felicia Sutandijo - 13520050
